@@ -4,10 +4,11 @@ import "./dropzone.css"
 
 export const Dropzone = (props) => {
 
-    function onLoadReader(evt) {
+    async function onLoadReader(evt) {
         const bstr = evt.target.result;
         let allInfo = bstr.split('\n')
-        console.log(allInfo)
+        allInfo = allInfo.filter(el => el.trim())
+        
         let table = []
         for (let i = 0; i < allInfo.length; i++) {
             let splited = allInfo[i].split(',')
@@ -28,7 +29,8 @@ export const Dropzone = (props) => {
             }
             objectsArray.push(newObj)
         }
-        props.setLoaded(objectsArray)
+        await props.setLoaded(objectsArray)
+        
     }
 
     const onDrop = useCallback((acceptedFiles) => {

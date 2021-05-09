@@ -18,7 +18,7 @@ export const Table = (props) => {
     }
 
     function printPhone(phone) {
-        return validPhone(phone)?phone.length === 10? "+1" + phone: phone.length === 11 ? "+" + phone : phone : phone
+        return validPhone(phone)? "+1" + phone.slice(-10) : phone
     }
 
     function validEmail(email) {
@@ -26,26 +26,26 @@ export const Table = (props) => {
     }
 
     function validAge(age) {
-        return !Number.isNaN(+age) && age % 1 === 0 && +age >= 21
+        return !isNaN(age) && +age >= 21 && +age % 1 === 0
     }
 
     function validExperience(experience, age) {
-        return !Number.isNaN(+experience) && +experience >= 0 && +experience % 1 === 0 && +age - 21 >= +experience 
+        return !isNaN(experience) && +experience >= 0 && +experience % 1 === 0 && +age - 21 >= +experience 
     }
 
     function validYearlyIncome(income) {
-        return !Number.isNaN(+income) && +income >= 0 && +income <= 1e6
+        return !isNaN(income) && +income >= 0 && +income <= 1e6
     }
 
     function validHasChildren(hasChildren) {
-        return hasChildren.toLowerCase() === "true" || hasChildren.toLowerCase() === "false" || hasChildren.toLowerCase() === ""
+        let arr = ['true', 'false', ''];
+        return arr.includes(hasChildren.toLowerCase())
     }
 
     function validLicenseStates(state) {
         let splittedState = state.split("|");
         let isGood = true
         splittedState.forEach(el => {
-            console.log(!/^[a-zA-Z]*$/.test(el))
             if (!/^[a-zA-Z]*$/.test(el)) {isGood = false}
         })
         return isGood
@@ -117,7 +117,7 @@ export const Table = (props) => {
                     {el["experience"]}
                 </td>
                 <td className={validYearlyIncome(el["yearly income"]) ? "" : "bg-red"}>
-                    {Number.isNaN(+el["yearly income"]) ? el["yearly income"] : Number(el["yearly income"]).toFixed(2)}
+                    {isNaN(el["yearly income"]) ? el["yearly income"] : Number(el["yearly income"]).toFixed(2)}
                 </td>
                 <td className={validHasChildren(el["has children"]) ? "" : "bg-red"}>
                     {el["has children"].toLowerCase() === "true" || el["has children"].toLowerCase() === "false" ? el["has children"].toUpperCase() : el["has children"].toLowerCase() === "" ? "FALSE" : el["has children"]}
