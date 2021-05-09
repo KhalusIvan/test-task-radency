@@ -49,7 +49,7 @@ export const Dropzone = (props) => {
     return (
         <div className="dropzone" {...getRootProps()}>
             <input {...getInputProps()} />
-            <p className="dropzone__text">Drag and drop some files here or click to select files</p>
+            <p className="dropzone__text">Drag and drop file here or click to select file</p>
         </div>
     )
 }
