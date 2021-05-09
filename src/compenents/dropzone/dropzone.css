@@ -1,0 +1,11 @@
+.dropzone {
+    margin: 10px auto;
+    width: 98%;
+    height: 60px;
+    border: 3px dashed red;
+}
+
+.dropzone__text {
+    width: 100%;
+    text-align: center;
+}

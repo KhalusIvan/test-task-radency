@@ -1,0 +1,34 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    width: 98%;
+    min-width: 850px;
+    overflow-x: scroll;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+thead {
+    font-weight: 700;
+}
+
+tr {
+    height: 40px;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.error {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
